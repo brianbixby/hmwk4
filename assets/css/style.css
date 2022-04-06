@@ -197,7 +197,7 @@ input:focus {
 
 /* media queries */
 @media (max-width: 520px) {
-    body {
-        margin: 0 15px;
+    main {
+        padding: 0 15px;
     }
 }
