@@ -194,3 +194,10 @@ input:focus {
 .show {
     display: block;
 }
+
+/* media queries */
+@media (max-width: 520px) {
+    body {
+        margin: 0 15px;
+    }
+}
