@@ -23,6 +23,8 @@ var currentQuestion;
 var timerInterval;
 var showlastQuestionResultFlag;
 
+console.log("Made with 🔥 - Brian Bixby");
+
 function handleFormContainerClick() {
     if (showlastQuestionResultFlag) {
         lastQuestionResultEl.setAttribute("class", "hide");
