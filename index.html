@@ -18,7 +18,7 @@
 </head>
 
 <body>
-
+    <!-- <img src="./assets/images/04-web-apis-homework-demo.gif" style="width: 100vh; height: auto;" /> -->
     <header>
         <button id="viewHighScoresButton">View Highscores</button>
         <p>Time: <span id="timeRemaining">0</span></p>
@@ -33,17 +33,17 @@
         </div>
 
         <div id="questionsContainer" class="hide">
-            <h1 id="questionHeader"></h1>
+            <h3 id="questionHeader"></h3>
             <ol id="answerList">
-                <li id="list0"></li>
-                <li id="list1"></li>
-                <li id="list2"></li>
-                <li id="list3"></li>
+                <li><button id="listButton0"></button></li>
+                <li><button id="listButton1"></button></li>
+                <li><button id="listButton2"></button></li>
+                <li><button id="listButton3"></button></li>
             </ol>
         </div>
 
         <div id="formContainer" class="hide">
-            <h1 id="formHeader">All Done!</h1>
+            <h3 id="formHeader">All Done!</h3>
             <p id="formDesc">Your final score is <span id="finalScore"></span>.</p>
             <form id="scoreForm" action="">
                 <label for="">Enter initials:</label>

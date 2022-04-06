@@ -7,23 +7,26 @@ var introContainerEl = document.querySelector("#introContainer");
 var questionsContainerEl = document.querySelector("#questionsContainer");
 var h1El = document.querySelector("#questionHeader");
 var listEl = document.querySelector("#answerList");
-var li0 = document.querySelector("#list0");
-var li1 = document.querySelector("#list1");
-var li2 = document.querySelector("#list2");
-var li3 = document.querySelector("#list3");
+var liButton0 = document.querySelector("#listButton0");
+var liButton1 = document.querySelector("#listButton1");
+var liButton2 = document.querySelector("#listButton2");
+var liButton3 = document.querySelector("#listButton3");
 var formContainerEl = document.querySelector("#formContainer");
 var scoresContainerEl = document.querySelector("#scoresContainer");
 var scoreFormEl = document.querySelector("#scoreForm");
 var clearButtonEl = document.querySelector("#clearButton");
 var backButtonEl = document.querySelector("#backButton");
+var headerEl = document.querySelector("header");
 var secondsLeft;
 var currentQuestion;
 var timerInterval;
 
 function goToLandingPage() {
+    timeEl.textContent = 0;
     formContainerEl.setAttribute("class", "hide");
     questionsContainerEl.setAttribute("class", "hide");
     scoresContainerEl.setAttribute("class", "hide");
+    headerEl.setAttribute("class", "show");
     introContainerEl.setAttribute("class", "show");
 }
 
@@ -40,6 +43,7 @@ function showHighScores() {
     formContainerEl.setAttribute("class", "hide");
     questionsContainerEl.setAttribute("class", "hide");
     introContainerEl.setAttribute("class", "hide");
+    headerEl.setAttribute("class", "hide");
     scoresContainerEl.setAttribute("class", "show");
     for (let i = 0; i < highScores.length; i++) {
         var li = document.createElement("li");
@@ -84,11 +88,12 @@ function setTimer() {
 function checkAnswer(event) {
     var element = event.target;
 
-    if (element.matches("li")) {
+    if (element.matches("button")) {
         if (element.getAttribute("data-val") == questions[currentQuestion].correctAnswer) {
             // to do animate correct
         } else {
             secondsLeft > 10 ? secondsLeft -= 10 : secondsLeft = 0;
+            timeEl.textContent = secondsLeft;
             // to do animate false
         }
         if (currentQuestion == 4) {
@@ -105,14 +110,14 @@ function checkAnswer(event) {
 function nextQuestion() {
     currentQuestion += 1;
     h1El.textContent = questions[currentQuestion].question;
-    li0.textContent = questions[currentQuestion].answers[0];
-    li0.setAttribute("data-val", questions[currentQuestion].answers[0]);
-    li1.textContent = questions[currentQuestion].answers[1];
-    li1.setAttribute("data-val", questions[currentQuestion].answers[1]);
-    li2.textContent = questions[currentQuestion].answers[2];
-    li2.setAttribute("data-val", questions[currentQuestion].answers[2]);
-    li3.textContent = questions[currentQuestion].answers[3];
-    li3.setAttribute("data-val", questions[currentQuestion].answers[3]);
+    liButton0.textContent = `1. ${questions[currentQuestion].answers[0]}`;
+    liButton0.setAttribute("data-val", questions[currentQuestion].answers[0]);
+    liButton1.textContent = `2. ${questions[currentQuestion].answers[1]}`;
+    liButton1.setAttribute("data-val", questions[currentQuestion].answers[1]);
+    liButton2.textContent = `3. ${questions[currentQuestion].answers[2]}`;
+    liButton2.setAttribute("data-val", questions[currentQuestion].answers[2]);
+    liButton3.textContent = `4. ${questions[currentQuestion].answers[3]}`;
+    liButton3.setAttribute("data-val", questions[currentQuestion].answers[3]);
 }
 
 function startQuiz() {
