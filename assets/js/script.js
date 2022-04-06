@@ -14,9 +14,23 @@ var li3 = document.querySelector("#list3");
 var formContainerEl = document.querySelector("#formContainer");
 var scoresContainerEl = document.querySelector("#scoresContainer");
 var scoreFormEl = document.querySelector("#scoreForm");
+var clearButtonEl = document.querySelector("#clearButton");
+var backButtonEl = document.querySelector("#backButton");
 var secondsLeft;
 var currentQuestion;
 var timerInterval;
+
+function goToLandingPage() {
+    formContainerEl.setAttribute("class", "hide");
+    questionsContainerEl.setAttribute("class", "hide");
+    scoresContainerEl.setAttribute("class", "hide");
+    introContainerEl.setAttribute("class", "show");
+}
+
+function clearHighScores() {
+    document.querySelector("#highscoresList").innerHTML = "";
+    localStorage.removeItem("highScores");
+}
 
 function showHighScores() {
     var highScores = JSON.parse(localStorage.getItem("highScores"));
@@ -112,3 +126,6 @@ function startQuiz() {
 startButtonEl.addEventListener("click", startQuiz);
 questionsContainerEl.addEventListener("click", checkAnswer);
 scoreFormEl.addEventListener("submit", handleScoreFormSubmit);
+clearButtonEl.addEventListener("click", clearHighScores);
+backButtonEl.addEventListener("click", goToLandingPage);
+viewHighScoresButtonEl.addEventListener("click", showHighScores);
