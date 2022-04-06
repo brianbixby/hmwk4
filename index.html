@@ -45,11 +45,19 @@
         <div id="formContainer" class="hide">
             <h1 id="formHeader">All Done!</h1>
             <p id="formDesc">Your final score is <span id="finalScore"></span>.</p>
-            <form id="highScoreForm" action="">
+            <form id="scoreForm" action="">
                 <label for="">Enter initials:</label>
                 <input id="initialsInput" type="text">
                 <button id="initialsSubmitButton">Submit</button>
             </form>
+        </div>
+
+        <div id="scoresContainer" class="hide">
+            <h1 id="scoresHeader">Highscores</h1>
+            <ul id="highscoresList"></ul>
+            <p>
+                <button id="backButton">Go Back</button> <button id="clearButton">Clear Highscores</button>
+            </p>
         </div>
 
     </main>

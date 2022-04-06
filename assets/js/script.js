@@ -12,23 +12,58 @@ var li1 = document.querySelector("#list1");
 var li2 = document.querySelector("#list2");
 var li3 = document.querySelector("#list3");
 var formContainerEl = document.querySelector("#formContainer");
-var highScoreFormEl = document.querySelector("#highScoreForm");
+var scoresContainerEl = document.querySelector("#scoresContainer");
+var scoreFormEl = document.querySelector("#scoreForm");
 var secondsLeft;
 var currentQuestion;
+var timerInterval;
+
+function showHighScores() {
+    var highScores = JSON.parse(localStorage.getItem("highScores"));
+    var highscoresListEl = document.querySelector("#highscoresList");
+    highscoresListEl.innerHTML = "";
+
+    formContainerEl.setAttribute("class", "hide");
+    questionsContainerEl.setAttribute("class", "hide");
+    introContainerEl.setAttribute("class", "hide");
+    scoresContainerEl.setAttribute("class", "show");
+    for (let i = 0; i < highScores.length; i++) {
+        var li = document.createElement("li");
+        li.textContent = `${highScores[i].name} - ${highScores[i].score}`;
+        highscoresListEl.appendChild(li);
+    }
+}
+
+function handleScoreFormSubmit(event) {
+    event.preventDefault();
+    var initials = document.querySelector("#initialsInput").value.trim();
+    if (initials.length) {
+        var highScores = JSON.parse(localStorage.getItem("highScores"));
+        if (highScores) {
+            highScores.push({ "name": initials, "score": Number(secondsLeft) });
+            highScores.sort((a, b) => b.score - a.score);
+        } else {
+            highScores = [{ "name": initials, "score": Number(secondsLeft) }];
+        }
+        localStorage.setItem("highScores", JSON.stringify(highScores));
+        showHighScores()
+        // to do remove displayed error neeed length
+    } else {
+        // to do display error neeed length
+    }
+}
 
 function setTimer() {
     secondsLeft = 76;
-    var timerInterval = setInterval(function () {
+    timerInterval = setInterval(function () {
         secondsLeft--;
         timeEl.textContent = secondsLeft;
-
-        if (secondsLeft <= 0 ) {
-            // Stops execution of action at set interval
+        if (secondsLeft <= 0) {
             clearInterval(timerInterval);
-            // Calls function to create and append image
-            //   sendMessage();
+            finalScore.textContent = secondsLeft;
+            questionsContainerEl.setAttribute("class", "hide");
+            formContainerEl.setAttribute("class", "show");
         }
-
     }, 1000);
 }
 
@@ -43,7 +78,7 @@ function checkAnswer(event) {
             // to do animate false
         }
         if (currentQuestion == 4) {
-            // to do stop timer
+            clearInterval(timerInterval);
             finalScore.textContent = secondsLeft;
             questionsContainerEl.setAttribute("class", "hide");
             formContainerEl.setAttribute("class", "show");
@@ -76,4 +111,4 @@ function startQuiz() {
 
 startButtonEl.addEventListener("click", startQuiz);
 questionsContainerEl.addEventListener("click", checkAnswer);
-
+scoreFormEl.addEventListener("submit", handleScoreFormSubmit);
