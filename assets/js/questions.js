@@ -10,7 +10,7 @@ var questions = [
         "correctAnswer": "alerts"
     },
     {
-        "question": "The condition in an if / else statement is enclosed within ________.",
+        "question": "The condition in an if / else statement is enclosed within _____.",
         "answers": [
             "quotes",
             "curly brackets",
@@ -20,7 +20,7 @@ var questions = [
         "correctAnswer": "parentheses"
     },
     {
-        "question": "Arrays in Javascript can be used to store ________.",
+        "question": "Arrays in Javascript can be used to store _____.",
         "answers": [
             "numbers and strings",
             "other arrays",
@@ -30,7 +30,7 @@ var questions = [
         "correctAnswer": "all of the above"
     },
     {
-        "question": "String values must be enclosed within ________ when being assigned to variables.",
+        "question": "String values must be enclosed within _____ when being assigned to variables.",
         "answers": [
             "commas",
             "curly brackets",

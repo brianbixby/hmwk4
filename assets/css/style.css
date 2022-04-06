@@ -34,7 +34,19 @@ p {
 
 button {
     cursor: pointer;
+    color: #FFF;
+    background-color: var(--primary-color-purple);
+    border: 1px solid var(--primary-color-purple);
+    padding: 2px 5px;
+    border-radius: 2px;
+    margin-right: 10px;
 }
+
+button:hover {
+    opacity: .8;
+}
+
+/* End general */
 
 /* header */
 header {
@@ -50,6 +62,10 @@ header {
     padding: 5px;
 }
 
+#viewHighScoresButton:focus {
+    outline: none;
+}
+
 header p {
     color: black;
     font-size: 16px;
@@ -59,35 +75,28 @@ header p {
     right: 5px;
 }
 
+/*  End Header */
+
+/* Landing container */
 #introContainer {
     text-align: center;
 }
 
-#title {
+#title,
+#scoresHeader {
     font-size: 34px;
     font-family: sans-serif;
     font-weight: 700;
     margin: 60px 0 30px;
-    text-align: center;
 }
 
 #startButton {
-    color: #FFF;
-    background-color: var(--primary-color-purple);
-    border: 1px solid var(--primary-color-purple);
     margin-top: 15px;
-    padding: 2px 5px;
-    border-radius: 2px;
 }
 
-.hide {
-    display: none;
-}
+/* End Landing container */
 
-.show {
-    display: block;
-}
-
+/* All other CSS */
 #introContainer,
 #questionsContainer,
 #formContainer,
@@ -126,4 +135,62 @@ header p {
     padding-top: 20px;
     border-top: 2px solid gray;
     color: gray;
+}
+
+/* li button {
+    color: #FFF;
+    background-color: var(--primary-color-purple);
+    border: 1px solid var(--primary-color-purple);
+    margin-top: 15px;
+    padding: 2px 5px;
+    border-radius: 2px;
+} */
+#formContainer,
+#scoresContainer {
+    text-align: left;
+}
+
+button:focus,
+input:focus {
+    outline: 1px solid blue;
+}
+
+/* form container */
+#formHeader {
+    margin: 60px 0 30px;
+    font-weight: bold;
+}
+
+#scoreForm {
+    margin: 30px 0 20px;
+}
+
+/* end form container */
+
+/* scores container */
+#scoresContainer {
+    margin-top: 88.5px;
+    margin-bottom: 30px;
+}
+
+#highscoresList {
+    margin: 25px 0;
+}
+
+#highscoresList li {
+    background-color: #EEE7FB;
+    line-height: 1.4;
+    margin: 5px 0;
+    padding: 2px;
+}
+
+/* end scores container */
+
+/* hide and show */
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
 }
