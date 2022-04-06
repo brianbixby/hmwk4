@@ -23,6 +23,12 @@ var currentQuestion;
 var timerInterval;
 var showlastQuestionResultFlag;
 
+function handleFormContainerClick() {
+    if (showlastQuestionResultFlag) {
+        lastQuestionResultEl.setAttribute("class", "hide");
+        showlastQuestionResultFlag = false;
+    }
+}
 function goToLandingPage() {
     timeEl.textContent = 0;
     formContainerEl.setAttribute("class", "hide");
@@ -96,8 +102,7 @@ function checkAnswer(event) {
     if (showlastQuestionResultFlag) {
         lastQuestionResultEl.setAttribute("class", "hide");
         showlastQuestionResultFlag = false;
-    }
-    if (element.matches("button")) {
+    } else if (element.matches("button")) {
         if (element.getAttribute("data-val") == questions[currentQuestion].correctAnswer) {
             lastQuestionResultEl.textContent = "Correct!";
             // to do animate correct
@@ -151,3 +156,4 @@ scoreFormEl.addEventListener("submit", handleScoreFormSubmit);
 clearButtonEl.addEventListener("click", clearHighScores);
 backButtonEl.addEventListener("click", goToLandingPage);
 viewHighScoresButtonEl.addEventListener("click", showHighScores);
+formContainerEl.addEventListener("click", handleFormContainerClick);
