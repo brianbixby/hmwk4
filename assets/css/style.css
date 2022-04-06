@@ -99,7 +99,7 @@ header p {
 
 #answerList {
     text-align: left;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 /* questions */
@@ -108,4 +108,21 @@ header p {
     font-size: 24px;
     font-weight: 700;
     margin: 60px 0 30px;
+}
+#questionsContainer button {
+    color: #FFF;
+    background-color: var(--primary-color-purple);
+    border: 1px solid var(--primary-color-purple);
+    padding: 2px 5px;
+    border-radius: 2px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+#lastQuestionResult {
+    max-width: 500px;
+    margin: 0 auto;
+    padding-top: 20px;
+    border-top: 2px solid gray;
+    color: gray;
 }

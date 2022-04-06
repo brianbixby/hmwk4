@@ -17,15 +17,18 @@ var scoreFormEl = document.querySelector("#scoreForm");
 var clearButtonEl = document.querySelector("#clearButton");
 var backButtonEl = document.querySelector("#backButton");
 var headerEl = document.querySelector("header");
+var lastQuestionResultEl = document.querySelector("#lastQuestionResult");
 var secondsLeft;
 var currentQuestion;
 var timerInterval;
+var showlastQuestionResultFlag;
 
 function goToLandingPage() {
     timeEl.textContent = 0;
     formContainerEl.setAttribute("class", "hide");
     questionsContainerEl.setAttribute("class", "hide");
     scoresContainerEl.setAttribute("class", "hide");
+    lastQuestionResultEl.setAttribute("class", "hide");
     headerEl.setAttribute("class", "show");
     introContainerEl.setAttribute("class", "show");
 }
@@ -44,6 +47,7 @@ function showHighScores() {
     questionsContainerEl.setAttribute("class", "hide");
     introContainerEl.setAttribute("class", "hide");
     headerEl.setAttribute("class", "hide");
+    lastQuestionResultEl.setAttribute("class", "hide");
     scoresContainerEl.setAttribute("class", "show");
     for (let i = 0; i < highScores.length; i++) {
         var li = document.createElement("li");
@@ -81,6 +85,7 @@ function setTimer() {
             finalScore.textContent = secondsLeft;
             questionsContainerEl.setAttribute("class", "hide");
             formContainerEl.setAttribute("class", "show");
+            // to do if time runs out hide all right stuff
         }
     }, 1000);
 }
@@ -88,12 +93,18 @@ function setTimer() {
 function checkAnswer(event) {
     var element = event.target;
 
+    if (showlastQuestionResultFlag) {
+        lastQuestionResultEl.setAttribute("class", "hide");
+        showlastQuestionResultFlag = false;
+    }
     if (element.matches("button")) {
         if (element.getAttribute("data-val") == questions[currentQuestion].correctAnswer) {
+            lastQuestionResultEl.textContent = "Correct!";
             // to do animate correct
         } else {
             secondsLeft > 10 ? secondsLeft -= 10 : secondsLeft = 0;
             timeEl.textContent = secondsLeft;
+            lastQuestionResultEl.textContent = "Wrong!";
             // to do animate false
         }
         if (currentQuestion == 4) {
@@ -101,6 +112,8 @@ function checkAnswer(event) {
             finalScore.textContent = secondsLeft;
             questionsContainerEl.setAttribute("class", "hide");
             formContainerEl.setAttribute("class", "show");
+            lastQuestionResultEl.setAttribute("class", "show");
+            showlastQuestionResultFlag = true;
         } else {
             nextQuestion();
         }
@@ -118,6 +131,10 @@ function nextQuestion() {
     liButton2.setAttribute("data-val", questions[currentQuestion].answers[2]);
     liButton3.textContent = `4. ${questions[currentQuestion].answers[3]}`;
     liButton3.setAttribute("data-val", questions[currentQuestion].answers[3]);
+    if (currentQuestion >= 1) {
+        lastQuestionResultEl.setAttribute("class", "show");
+        showlastQuestionResultFlag = true;
+    }
 }
 
 function startQuiz() {
