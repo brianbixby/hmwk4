@@ -10,43 +10,28 @@
     margin: 0;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     margin: 0 auto;
     background-color: #FFF;
     font-family: sans-serif;
 }
 
-h1 {
-    font-size: 34px;
+main {
+    margin-top: 60px;
+    max-width: 500px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-h3 {
-    font-size: 24px;
-}
-
-p {
-    font-size: 16px;
+input {
+    margin-bottom: 20px;
+    margin-left: 5px;
 }
 
 button {
     cursor: pointer;
-    color: #FFF;
-    background-color: var(--primary-color-purple);
-    border: 1px solid var(--primary-color-purple);
-    padding: 2px 5px;
-    border-radius: 2px;
-    margin-right: 10px;
 }
 
-button:hover {
-    opacity: .8;
-}
-
-/* End general */
 
 /* header */
 header {
@@ -75,118 +60,73 @@ header p {
     right: 5px;
 }
 
-/*  End Header */
-
-/* Landing container */
-#introContainer {
-    text-align: center;
+#lastQuestionResult {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 5px solid #E5E5E5;
+    font-size: 18px;
+    color: #E5E5E5;
 }
 
-#title,
-#scoresHeader {
-    font-size: 34px;
-    font-family: sans-serif;
-    font-weight: 700;
-    margin: 60px 0 30px;
-}
-
-#startButton {
-    margin-top: 15px;
-}
-
-/* End Landing container */
-
-/* All other CSS */
-#introContainer,
-#questionsContainer,
-#formContainer,
-#scoresContainer {
-    text-align: center;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-#answerList {
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-/* questions */
-#questionHeader {
-    text-align: left;
+.subHeading {
     font-size: 24px;
     font-weight: 700;
-    margin: 60px 0 30px;
+    margin-bottom: 25px;
 }
 
-#questionsContainer button {
+.heading {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.text {
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+.primaryButton {
+    cursor: pointer;
     color: #FFF;
     background-color: var(--primary-color-purple);
     border: 1px solid var(--primary-color-purple);
-    padding: 2px 5px;
+    padding: 5px 10px;
     border-radius: 2px;
-    margin-bottom: 5px;
-    margin-left: 5px;
+    font-size: 15px;
 }
 
-#lastQuestionResult {
-    max-width: 500px;
-    margin: 0 auto;
-    padding-top: 20px;
-    border-top: 2px solid gray;
-    color: gray;
+.highscoresList {
+    margin-bottom: 25px;
 }
 
-/* li button {
-    color: #FFF;
-    background-color: var(--primary-color-purple);
-    border: 1px solid var(--primary-color-purple);
-    margin-top: 15px;
-    padding: 2px 5px;
-    border-radius: 2px;
-} */
-#formContainer,
-#scoresContainer {
-    text-align: left;
-}
-
-button:focus,
-input:focus {
-    outline: 1px solid blue;
-}
-
-/* form container */
-#formHeader {
-    margin: 60px 0 30px;
-    font-weight: bold;
-}
-
-#scoreForm {
-    margin: 30px 0 20px;
-}
-
-/* end form container */
-
-/* scores container */
-#scoresContainer {
-    margin-top: 88.5px;
-    margin-bottom: 30px;
-}
-
-#highscoresList {
-    margin: 25px 0;
-}
-
-#highscoresList li {
+.highscoresList li {
     background-color: #EEE7FB;
     line-height: 1.4;
     margin: 5px 0;
     padding: 2px;
 }
 
-/* end scores container */
+button:hover {
+    opacity: .8;
+}
 
-/* hide and show */
+.primaryButton:focus,
+input:focus {
+    border: 1px solid blue;
+}
+
+.ml-5 {
+    margin-left: 5px;
+}
+
+.mb-5 {
+    margin-bottom: 5px;
+}
+
+.text-center {
+    text-align: center
+}
+
 .hide {
     display: none;
 }
